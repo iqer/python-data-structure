@@ -24,17 +24,18 @@ class LinkedList:
             raise IndexError("索引值异常!")
         node = Node(data)
 
-        if self.size == 0:
-            self.head = None
-            self.last = None
+        # if self.size == 0:
+        #     self.head = None
+        #     self.last = None
 
         # 头部插入
-        elif index == 0:
+        if index == 0:
             node.next = self.head
             self.head = node
         # 尾部插入
         elif index == self.size:
-            self.last.next = node
+            prev_node = self.get(index-1)
+            prev_node.next = node
             self.last = node
         # 中间插入
         else:
@@ -68,3 +69,14 @@ class LinkedList:
         while p is not None:
             print(p.data)
             p = p.next
+
+
+if __name__ == '__main__':
+    l1 = LinkedList()
+    l1.insert(0, 3)
+    l1.insert(0, 4)
+    l1.insert(2, 9)
+    l1.insert(3, 5)
+    l1.insert(1, 6)
+    l1.remove(0)
+    l1.output()
