@@ -55,6 +55,7 @@ class LinkedList:
         elif index == self.size - 1:
             prev_node = self.get(index-1)
             removed_node = prev_node.next
+            prev_node.next = None
             self.last = prev_node
         # 删除中间节点
         else:
@@ -78,5 +79,5 @@ if __name__ == '__main__':
     l1.insert(2, 9)
     l1.insert(3, 5)
     l1.insert(1, 6)
-    l1.remove(0)
+    l1.remove(4)
     l1.output()
