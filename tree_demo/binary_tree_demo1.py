@@ -136,6 +136,21 @@ def post_order_traversal_with_satck(node):
     print(result[::-1])
 
 
+from queue import Queue
+
+
+def level_order_traversal(node):
+    queue = Queue()
+    queue.put(node)
+    while not queue.empty():
+        node = queue.get()
+        print(node.data)
+        if node.left is not None:
+            queue.put(node.left)
+        if node.right is not None:
+            queue.put(node.right)
+
+
 if __name__ == '__main__':
     data_list = [3, 2, 9, None, None, 10, None, None, 8, None, 4]
     root = create_binary_tree(data_list)
@@ -148,3 +163,5 @@ if __name__ == '__main__':
     print('后序遍历: ')
     # post_order_traversal(root)
     post_order_traversal_with_satck(root)
+    # print(f'广度遍历: {level_order_traversal(root)}')
+    level_order_traversal(root)
